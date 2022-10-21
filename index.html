@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en_UK">
+<head>
+    <title>Intana </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" type="text/css" media="print" href="./css/print.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  
+    <link rel="icon" href="./img/favicon.png">
+</head>
+<body class="search">
+    <header id="header" role="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <nav id="menu" class="navbar navbar-default navbar-fixed-top" role="navigation">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <button type="button" class="no-print navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a id="logo" class="navbar-brand" itemprop="url" href="~/"><img class="logo" src="./img/logo.svg"></a>
+                            </div>
+                            <div id="navbar" class="no-print collapse navbar-collapse">
+                              
+                                    <form class="navbar-form hidden-xs hidden-sm hidden-md" action="~/Provider/SearchResults" role="search">
+                                        <div class="form-group" style="position:relative">
+                                            <input type="text" name="provider" class="form-control" placeholder="Provider Name" id="header-search-provider-name">
+                                            <span class="micon-svg10 right" style="right:10px;" onclick="javascript: $('#header-search-provider-name').val('');"></span>
+                                        </div>
+                                        <div class="form-group" style="position:relative;">
+                                            <input type="text" name="country" class="form-control" placeholder="Country" id="header-search-country">
+                                            <span class="micon-svg10 right" onclick="javascript: $('#header-search-country').val('');"></span>
+                                        </div>
+                                        <button type="submit" class="btn btn-default btn-search">Quick Search</button>
+                                    </form>
+                                    <ul class="nav navbar-nav navbar-right">
+                                       
+                                     
+                                        <li>
+                                            
+                                            <a href="javascript:document.getElementById('logoutForm').submit()" class="btn-signout">Sign out</a>
+                                        </li>
+                                    </ul>
+                               
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="showsupport" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                    <h3 id="modalTitle" class="modal-title" style="font-size:14pt;">INTAWORLD SUPPORT</h3>
+                </div>
+                <div id="modalBody" class="modal-body">
+                    Please <a target="_blank" href="~/SupportDocument/ViewDocument">click here</a> to view the support document
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="feedbackSuccess" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                    <h3 id="modalTitle" class="modal-title" style="font-size:14pt;">Thanks</h3>
+                </div>
+                <div id="modalBody" class="modal-body">
+                    @*Please email <a href="mailto:network@collinsongroup.com">network@collinsongroup.com</a> to request a password change*@
+                    Thanks for your feedback.
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="disclaimerMessage" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                    <h3 id="modalTitle" class="modal-title" style="font-size:14pt;">Disclaimer</h3>
+                </div>
+                <div id="disclaimerBody" class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">I Agree</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="search-panel">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <div class="alert alert-success">&#10003; Welcome back, Test User</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <div>
+                    <div class="pull-left"><h1>Provider Search</h1></div>
+                    <div class="pull-right" style="color: white;"><span style="vertical-align: bottom; display: table-cell; height: 36px;" id="home-search-provider-count"></span></div>
+                </div>
+
+                <form role="form" action="~/Provider/SearchResults">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="provider" placeholder="Provider Name" id="home-search-provider-name">
+                                <span class="micon-svg10 absolute" onclick="javascript: $('#home-search-provider-name').val('');"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <select class="form-control selectpadd" name="category" id="home-search-category"
+                                        data-bind="options: categories,
+                                        optionsText: function(item){return item.Name},
+                                        optionsValue : 'Id',
+                                        optionsCaption: 'Category',
+                                        value : selectedCategory"></select>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <select class="form-control selectpadd" name="country-id" id="home-search-country" data-bind="options: countries,optionsText: function(item){return item.Name},optionsValue : 'Id',optionsCaption: 'Country',value : selectedCountry"></select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <select class="form-control selectpadd" name="city" id="home-search-city"
+                                        data-bind="options: cities,
+                                        optionsText: function(item){return item.Name},
+                                        optionsValue : 'Name' ,
+                                        optionsCaption: 'City' ,
+                                        value : selectedCity,
+                                        visible: cities().length>
+                                    0">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-group" id="advanced-search">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="panleHeading">
+
+                                <a data-toggle="collapse" id="linkAdvancedSearch" data-parent="#advanced-search" href="#advanced-search-panel" class="collapsed">Advanced Search</a>
+                                <a class="pull-right" href="#" id="linkClearSearch">> Clear Search</a>
+                            </div>
+                            <div id="advanced-search-panel" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="currentLocation" placeholder="Customer current location" id="home-customer-current-location">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <select class="form-control" name="subcategory" id="home-search-subcategory"
+                                                        data-bind="
+                                                        options: selectedCategory() ? subcategories : null,
+                                                        optionsText: function(item){return '&nbsp;&nbsp;' +item.Name},
+                                                        optionsValue : 'Id' ,
+                                                        optionsCaption: 'Sub Category' ,
+                                                        value: selectedSubCategory,
+                                                        visible: subcategories().length>
+                                                    0">
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <select class="form-control" name="subcategoryone" id="home-search-subcategoryone"
+                                                        data-bind="
+                                                        options: selectedSubCategory() ? subcategoryones : null,
+                                                        optionsText: function(item){return '&nbsp;&nbsp;' +item.Name},
+                                                        optionsValue : 'Id' ,
+                                                        optionsCaption: 'Sub Category' ,
+                                                        value: selectedSubCategoryOne,
+                                                        visible: subcategoryones().length>
+                                                    0">
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+
+                                                <select class="form-control" name="subcategorytwo" id="home-search-subcategorytwo"
+                                                        data-bind="
+                                                        options: selectedSubCategoryOne() ? subcategorytwos : null,
+                                                        optionsText: function(item){return '&nbsp;&nbsp;' +item.Name},
+                                                        optionsValue : 'Id' ,
+                                                        optionsCaption: 'Sub Category' ,
+                                                        value: selectedSubCategoryTwo,
+                                                        visible: subcategorytwos().length>
+                                                    0">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <select class="form-control" name="ranking" id="home-search-ranking">
+                                                        <option value="">Ranking</option>
+                                                        <option value="@c.Key"> @Html.Raw("&nbsp;&nbsp;")@c.Value</option>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <select class="form-control" name="network" id="home-search-network">
+                                                        <option value="">Network/Group</option>
+                                                      <option value="@c.Key">@Html.Raw("&nbsp;&nbsp;")@c.Value</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <select class="form-control" name="specialism" id="home-search-specialism">
+                                                        <option value="">Specialism</option>
+                                                        <option value="@c.Key">@Html.Raw("&nbsp;&nbsp;")@c.Value</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <select class="form-control selectpadd" name="accessmethod" id="home-search-accessmethod" data-bind="options:accessmethods ,optionsText: function(item){return  item.Name},optionsValue : 'Id',optionsCaption: 'Access Method',value : selectAccessmethods"></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <div class="form-group">
+                                                    <select class="form-control selectpadd" name="Preferred" id="home-search-Preferred" data-bind="visible:selectAccessmethods()!='@AccessId' && selectAccessmethods()!=null, options:preferred ,optionsText: function(item){return  item.Name},optionsValue : 'Id',optionsCaption: 'Parent Agents' ,value:selectPreferred"></select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="search.html" class="btn btn-default btn-search">
+                        Search
+                    </a>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5 col-sm-offset-1">
+            <section id="previous-searches">
+                <h2>PREVIOUS SEARCH RESULTS</h2>
+                    <ul>
+                                <li><a target="_blank" href="Provider/view/724/?customerLocation=" title="View: ADVENTISTA DE BELEM"> ADVENTISTA DE BELEM</a></li>
+                                <li><a target="_blank" href="Provider/view/4520/?customerLocation=" title="View: AFRICA ASSIST MED NET "> AFRICA ASSIST MED NET </a></li>
+                                <li><a target="_blank" href="Provider/view/308/?customerLocation=" title="View: 28 DE AGOSTO HOSPITAL"> 28 DE AGOSTO HOSPITAL</a></li>
+                                <li><a target="_blank" href="Provider/view/8146/?customerLocation=" title="View: (AP-HM) CENTRE HOSPITALIER DE LA TIMONE"> (AP-HM) CENTRE HOSPITALIER DE LA TIMONE</a></li>
+                                <li><a target="_blank" href="Provider/view/4030/?customerLocation=" title="View:  AL WAKRA HOSPITAL  ">  AL WAKRA HOSPITAL  </a></li>
+                                <li><a target="_blank" href="Provider/view/1406/?customerLocation=" title="View: AABENRAA SYGEHUS"> AABENRAA SYGEHUS</a></li>
+                    </ul>
+            </section>
+        </div>
+        <div class="col-sm-5">
+           <section id="quick-links">
+                    <h2>Quick Links</h2>
+                    <ul>
+                                <li><a href="http://intana.360assistance.com/" target="_blank" class="btn btn-default" title="360 Assistance Portal">360 Assistance Portal</a></li>
+                                <li><a href="https://confluence.tcgnws.com/pages/viewpage.action?title=Medical+Networks&amp;spaceKey=INT" target="_blank" class="btn btn-default" title="Knowledge Hub - Medical Networks">Knowledge Hub - Medical Networks</a></li>
+                                <li><a href="https://www.google.co.uk/maps" target="_blank" class="btn btn-default" title="Google Maps">Google Maps</a></li>
+                                <li><a href="https://www.gov.uk/foreign-travel-advice" target="_blank" class="btn btn-default" title="FCO Travel Advice">FCO Travel Advice</a></li>
+                    </ul>
+                </section>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="hdnDisclaimer" value="@Model.Disclaimer" />
+
+
+
+    <script src="https:///cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
+    <script src="./js/home.js"></script>
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            if ('@TempData["ShowDisclaimer"]'== 'True') {
+                if ($('#hdnDisclaimer').val().length > 0)
+                {
+                    $('#disclaimerBody').html($('#hdnDisclaimer').val());
+                    $("#disclaimerMessage").modal({
+                        backdrop: 'static'
+                    });
+                    $('#disclaimerMessage').modal('show');
+                }
+            }
+        });
+
+        var searchPhrase, selectedRanking, selectedNetwork, selectedSpecialism, selectaccessmethd, selectaccesspred;
+        @if (Model.CurrentSearchRecord != null)
+        {
+            <text>
+            searchPhrase = "@Model.CurrentSearchRecord.Name";
+            selectedRanking = "@Model.CurrentSearchRecord.RankingId";
+            selectedNetwork = "@Model.CurrentSearchRecord.NetworkGroupId";
+            selectedSpecialism = "@Model.CurrentSearchRecord.SpecialismId";
+            selectaccessmethd = "@Model.CurrentSearchRecord.AccessMethodId";
+            //selectaccesspred = "@Model.CurrentSearchRecord.PreferredId";
+        </text>
+        }
+        var AccessIds = "@Model.AccessMethod.Where(m=>m.Value ==AccessMethodEnum.CollinsonNetwork.GetEnumDescription().ToString()).Select(m=>m.Key).FirstOrDefault()";
+
+        var viewModel = new searchLookupViewModel();
+        ko.applyBindings(viewModel);
+
+        viewModel.categories([
+            @foreach (var c in Model.Categories)
+            {
+                @:{ "Id": "@(c.Key)", "Name": "  " + "@(c.Value)" },
+            }
+        ]);
+
+
+        viewModel.countries([
+            @if (Model.Countries != null)
+            {
+                foreach (var c in Model.Countries.OrderBy(s=>s.Value))
+                {
+                    @:{ "Id": "@(c.Key)", "Name": "  @(c.Value)" },
+                }
+            }
+        ]);
+        viewModel.accessmethods([
+            @if (Model.AccessMethod != null)
+            {
+                foreach (var c in Model.AccessMethod)
+                {
+                    @:{ "Id": "@(c.Key)", "Name":'\xA0'+ '@c.Value' },
+                }
+            }
+        ]);
+        viewModel.preferred([
+            @if (Model.Preferred != null)
+            {
+                foreach (var c in Model.Preferred)
+                {
+                    if(c.Value !="")
+                    {
+                    @:{ "Id": "@(c.Key)", "Name": "\xA0\xA0" + '@c.Value' },
+                    }
+                }
+            }
+        ]);
+
+
+        @if (Model.CurrentSearchRecord != null)
+        {
+
+             @*if (Model.CurrentSearchRecord.City != null)
+           {
+                @:viewModel.selectedCity(@Model.CurrentSearchRecord.City);
+                    }*@
+        string subCategory = string.Empty, subCategoryOne = string.Empty, subCategoryTwo = string.Empty, city = string.Empty, accessmethodId = string.Empty, preferredId = string.Empty;
+        if (Model.CurrentSearchRecord.CountryId != null)
+        {
+                @:viewModel.selectedCountry(@Model.CurrentSearchRecord.CountryId.Value);
+
+            }
+
+            if (Model.CurrentSearchRecord.CategoryId != null)
+            {
+
+                @:viewModel.selectedCategory(@Model.CurrentSearchRecord.CategoryId.Value);
+            }
+
+            if (Model.CurrentSearchRecord.SubCategoryId != null)
+            {
+
+                subCategory = @Model.CurrentSearchRecord.SubCategoryId.Value.ToString();
+
+            }
+
+            if (Model.CurrentSearchRecord.SubCategoryOneId != null)
+            {
+
+                subCategoryOne = @Model.CurrentSearchRecord.SubCategoryOneId.Value.ToString();
+            }
+
+            if (Model.CurrentSearchRecord.SubCategoryTwoId != null)
+            {
+
+                subCategoryTwo = @Model.CurrentSearchRecord.SubCategoryTwoId.Value.ToString();
+            }
+            if (Model.CurrentSearchRecord.City != null)
+            {
+
+                city = @Model.CurrentSearchRecord.City;
+            }
+            if (Model.CurrentSearchRecord.AccessMethodId != null)
+            {
+
+                @:viewModel.selectAccessmethods(@Model.CurrentSearchRecord.AccessMethodId.Value);
+            }
+            if (Model.CurrentSearchRecord.AccessMethodId != Model.AccessMethod.Where(m=>m.Value ==AccessMethodEnum.CollinsonNetwork.GetEnumDescription().ToString()).Select(m=>m.Key).FirstOrDefault())
+            {
+                if (Model.CurrentSearchRecord.PreferredId != null)
+                {
+                    @:viewModel.selectPreferred('@Model.CurrentSearchRecord.PreferredId');
+                }
+            }
+
+
+
+            @:viewModel.setDefaults({ "city": "@city", "selectedSubCategory": "@subCategory", "selectedSubCategoryOne": "@subCategoryOne", "selectedSubCategoryTwo": "@subCategoryTwo"});
+
+
+        }
+
+
+    </script>
+    <script src="./js/homePopulateFilters.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+   
+    <script src="./js/scripts.js"></script>
+   
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="js/respond.min.js"></script>
+    <script src="js/legacy.js"></script>
+    <![endif]-->
+    <footer class="text-right" style="margin-top:20px;padding:10px">
+       <p>Application version :<strong>3.0.8.1211</strong></p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,44 @@
+﻿body{
+
+/*width:8.27in; 
+margin:.5in .5in .5in .5in;*/ 
+
+}
+.no-print, 
+ul.nav,
+header,
+#map #maptoggle {
+    display:none;
+}
+
+#results-panel .inner {
+    height:auto;
+    overflow:auto;
+}
+
+#result-map-column,
+#result-list-column
+{
+    width:100% !important;
+    clear:both;
+}
+
+#map {
+    position:relative;
+    width:100%;
+ top: 0;
+    height:300px; 
+}
+
+#results-panel {
+ position: relative; 
+ overflow: auto;
+ width: 100%; 
+ top: 0;
+ background:#fff;
+ color:#333 !important;
+}
+#results-panel h1{
+ color:#333;
+
+}

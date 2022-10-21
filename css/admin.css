@@ -1,0 +1,328 @@
+
+.col-admin-nav ul {
+    list-style: none;
+    margin: 30px 0 0 0;
+    padding: 0;
+}
+
+    .col-admin-nav ul li {
+        list-style: none;
+        margin: 0;
+        padding: 3px 0;
+    }
+
+
+.table-admin td .fa {
+    padding-left: 8px;
+}
+
+
+
+.table-admin thead tr th {
+    padding-top: 6px;
+}
+
+.table-admin tfoot tr {
+    background-color: rgba(97,194,80,1);
+    color: #fff;
+}
+
+.table-admin .form-control {
+    display: inline;
+    width: auto;
+}
+
+.table-admin tbody tr:hover,
+.table-admin tbody tr:hover td {
+    background-color: rgba(197, 229, 164, 0.25);
+}
+
+.table-admin td.list-row-actions {
+    padding: 8px;
+    text-align: right;
+}
+
+.table-admin td a {
+    white-space: nowrap;
+}
+
+.fa {
+    /*font-size:1.5em;*/
+}
+
+#admin-list-search input[type="text"] {
+    width: 200px;
+    float: left;
+    margin-right: 3px;
+    margin-bottom: 10px;
+}
+
+.btn.btn-save {
+    margin-top: 20px;
+    background: rgba(0,122,63,1);
+    color: rgba(255,255,255,1);
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    line-height: 1;
+    transition: background 0.15s ease-in-out;
+}
+
+    .btn.btn-save:hover {
+        background: rgba(197,229,164,0.5);
+        color: rgba(0,0,0,1);
+    }
+
+    .btn.btn-save.btn-save-exit:before {
+        content: "\e690";
+        font-family: 'icomoon';
+        font-size: 20px;
+        position: absolute;
+        top: 40%;
+        margin-top: -7px;
+        left: 10px;
+    }
+
+    .btn.btn-save.btn-save-continue:before {
+        content: "\e687";
+        font-family: 'icomoon';
+        font-size: 20px;
+        position: absolute;
+        top: 40%;
+        margin-top: -7px;
+        left: 10px;
+    }
+
+    .btn.btn-save.btn-exit:before {
+        content: "\e69f";
+        font-family: 'icomoon';
+        font-size: 20px;
+        position: absolute;
+        top: 40%;
+        margin-top: -7px;
+        left: 10px;
+    }
+
+.btn.btn-page {
+    background: rgba(0,122,63,1);
+    color: rgba(255,255,255,1);
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    line-height: 1;
+    transition: background 0.15s ease-in-out;
+    margin: 10px 4px 2px 0;
+}
+
+    .btn.btn-page:hover,
+    .btn.btn-page.active {
+        background: rgba(197,229,164,0.5);
+        color: rgba(0,0,0,1);
+    }
+
+.btn.btn-addnew {
+    float: right;
+}
+
+    .btn.btn-addnew:before {
+        content: "\e684";
+        font-family: 'icomoon';
+        font-size: 20px;
+        position: absolute;
+        top: 40%;
+        margin-top: -9px;
+        left: 10px;
+    }
+
+.editor-label,
+.editor-label label {
+    margin: 0;
+    color: #696969;
+    font-weight: 400;
+}
+
+.editor-field {
+    margin-top: -1px;
+    margin-bottom: 15px;
+}
+
+    .editor-field input:not([type="checkbox"]) {
+        width: 300px;
+        padding: 3px;
+    }
+
+    .editor-field select {
+        width: 300px;
+        padding: 3px;
+    }
+
+    .editor-field input.input-validation-error {
+        background-color: #ffb8bf;
+    }
+
+legend {
+    display: none;
+}
+
+a.sortable {
+    padding-right: 15px;
+    background: url(../img/tablesort-unsorted.svg) top right no-repeat;
+    background-size: 7px 16px;
+}
+
+    a.sortable.sorted-asc {
+        background: url(../img/tablesort-asc.svg) top right no-repeat;
+    }
+
+    a.sortable.sorted-desc {
+        background: url(../img/tablesort-desc.svg) top right no-repeat;
+    }
+
+
+tr.Expanded {
+    border: 4px solid rgb(0, 122, 63);
+    border-bottom: 0;
+}
+
+tr.Sub {
+    border: 4px solid rgb(0, 122, 63);
+    border-top: 0;
+    background-color: #fff;
+}
+
+    tr.Sub td {
+        padding: 0;
+    }
+
+        tr.Sub,
+        tr.Sub:hover,
+        tr.Sub:hover td,
+        tr.Sub td table tr,
+        tr.Sub td table tr:hover,
+        tr.Sub td table tr:hover td {
+            background-color: #fff;
+        }
+
+#SubCategoryContentContainer {
+}
+
+.SubCategoryContent {
+    width: 33%;
+    float: left;
+    border: 2px solid rgba(97,194,80,1);
+    min-height: 40px;
+}
+
+    .SubCategoryContent input.form-control,
+    #SubCategoryOneContent input.form-control,
+    #SubCategoryTwoContent input.form-control {
+        width: 140px;
+        float: left;
+    }
+
+#SubCategoryOneContentContainer,
+#SubCategoryTwoContentContainer {
+    width: 33%;
+    float: left;
+    border: 2px solid rgba(97,194,80,1);
+    min-height: 40px;
+    margin-left: -2px;
+}
+
+.SubCategoryContent div {
+    width: 100%;
+}
+
+    .SubCategoryContent div a.cat-edit,
+    #SubCategoryOneContentContainer div a.cat-edit,
+    #SubCategoryTwoContent div a.cat-edit {
+        display: block;
+        float: left;
+        width: 70%;
+        padding: 10px 10px;
+        border-bottom: 1px solid rgba(97,194,80,1);
+    }
+
+div a.cat-delete {
+    display: block;
+    float: left;
+    width: 15%;
+    padding: 10px 10px;
+    background-color: rgba(194,97,80,0.5);
+    color: #fff;
+    border-bottom: 1px solid rgba(255,255,255,1);
+    text-align: center;
+}
+
+    div a.cat-delete:hover {
+        -moz-transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+        background-color: #fff;
+        color: rgba(194,97,80,1);
+    }
+
+    div a.cat-new-edit {
+    display: block;
+    float: left;
+    width: 15%;
+    padding: 10px 10px;
+    background-color: rgba(90,194,80,0.5);
+    color: #fff;
+    border-bottom: 1px solid rgba(255,255,255,1);
+    text-align: center;
+}
+
+    div a.cat-new-edit:hover {
+        -moz-transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+        background-color: #fff;
+        color: rgba(90,194,80,1);
+    }
+
+.SubCategoryContent div a.sub-category-active,
+div a.sub-category-one-active {
+    font-weight: bold;
+    background-color: rgba(97,194,80,1);
+    color: #fff;
+}
+
+
+.SubCategoryContent div form,
+#SubCategoryOneContent div form,
+#SubCategoryTwoContent div form {
+    display: block;
+    width: 100%;
+    padding: 10px 10px;
+    border-bottom: 1px solid rgba(97,194,80,1);
+}
+
+.SubCategoryContent div:last-child {
+    border-bottom: 0;
+}
+
+.btn.btn-save.btn-inline {
+    margin: 0 10px;
+}
+
+
+#sortable-table tbody tr {
+    cursor: pointer;
+}
+
+
+.field-validation-error {
+    color: #b20000;
+}
+.text-bold{	font-weight: bold;}
+.text-bold1 option:first-child {
+    font-weight:bold;
+}
+.blue, .blue:before{
+color:#239445 !important;
+}

@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en_UK">
+<head>
+    <title>Intana </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" type="text/css" media="print" href="./css/print.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  
+    <link rel="icon" href="./img/favicon.png">
+</head>
+<body class="search">
+    <header id="header" role="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <nav id="menu" class="navbar navbar-default navbar-fixed-top" role="navigation">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <button type="button" class="no-print navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a id="logo" class="navbar-brand" itemprop="url" href="~/"><img class="logo" src="./img/logo.svg"></a>
+                            </div>
+                            <div id="navbar" class="no-print collapse navbar-collapse">
+                              
+                                    <form class="navbar-form hidden-xs hidden-sm hidden-md" action="~/Provider/SearchResults" role="search">
+                                        <div class="form-group" style="position:relative">
+                                            <input type="text" name="provider" class="form-control" placeholder="Provider Name" id="header-search-provider-name">
+                                            <span class="micon-svg10 right" style="right:10px;" onclick="javascript: $('#header-search-provider-name').val('');"></span>
+                                        </div>
+                                        <div class="form-group" style="position:relative;">
+                                            <input type="text" name="country" class="form-control" placeholder="Country" id="header-search-country">
+                                            <span class="micon-svg10 right" onclick="javascript: $('#header-search-country').val('');"></span>
+                                        </div>
+                                        <button type="submit" class="btn btn-default btn-search">Quick Search</button>
+                                    </form>
+                                    <ul class="nav navbar-nav navbar-right">
+                                       
+                                     
+                                        <li>
+                                            
+                                            <a href="javascript:document.getElementById('logoutForm').submit()" class="btn-signout">Sign out</a>
+                                        </li>
+                                    </ul>
+                               
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="showsupport" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                    <h3 id="modalTitle" class="modal-title" style="font-size:14pt;">INTAWORLD SUPPORT</h3>
+                </div>
+                <div id="modalBody" class="modal-body">
+                    Please <a target="_blank" href="~/SupportDocument/ViewDocument">click here</a> to view the support document
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="feedbackSuccess" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                    <h3 id="modalTitle" class="modal-title" style="font-size:14pt;">Thanks</h3>
+                </div>
+                <div id="modalBody" class="modal-body">
+                    @*Please email <a href="mailto:network@collinsongroup.com">network@collinsongroup.com</a> to request a password change*@
+                    Thanks for your feedback.
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="disclaimerMessage" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                    <h3 id="modalTitle" class="modal-title" style="font-size:14pt;">Disclaimer</h3>
+                </div>
+                <div id="disclaimerBody" class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">I Agree</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <section id="map" class="accelerated_layer">
+                <a class="map-toggle" href="#" id="maptoggle"></a>
+                <div id="themap">
+                    <div id="map-canvas" class="accelerated_layer"></div>
+                </div>
+            </section>
+        </div>
+        <div class="col-sm-6">
+           
+               <section id="results-panel" class="accelerated_layer">
+                <a class="map-toggle" href="#" id="pntoggle"></a>
+                <p class="intro">Your Search</p>
+                <h1>Antigua and Barbuda</h1>
+
+
+                <div class="inner">
+                    <section class="search-filters">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="pull-left">
+                                    <h2>Search Filters</h2>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="/"><span>←</span> Return to dashboard</a>
+                                </div>
+                            </div>
+                        </div>
+                        <form role="form">
+                            <div class="row">
+                                <div class="col-sm-12 form-group">
+                                    <input type="text" class="form-control ui-autocomplete-input" placeholder="Provider Name" name="provider" value="" id="home-search-provider-name" autocomplete="off">
+                                    <span class="micon-svg10" onclick="javascript: $('#home-search-provider-name').val('');"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Customer current location" id="currentLocation" name="currentLocation">
+                                        <span class="micon-svg10" onclick="javascript: $('#currentLocation').val('');"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <select class="form-control selectpadd" name="country-Id" id="home-search-country" data-bind="options: countries,
+                                        optionsText: function(item){return item.Name},
+                                        optionsValue : 'Id',
+                                        optionsCaption: 'Country',
+                                        value : selectedCountry"><option value="">Country</option><option value="128">Afghanistan</option><option value="129">Albania</option><option value="130">Algeria</option><option value="131">American Samoa (US)</option><option value="132">Andorra</option><option value="24">Angola</option><option value="133">Anguilla (UK)</option><option value="542">Antarctica</option><option value="80">Antigua and Barbuda</option><option value="25">Argentina</option><option value="22">Armenia</option><option value="135">Aruba</option><option value="555">Ascension Island (UK)</option><option value="17">Australia</option><option value="26">Austria</option><option value="136">Azerbaijan</option><option value="137">Bahamas</option><option value="138">Bahrain</option><option value="139">Bangladesh</option><option value="79">Barbados</option><option value="140">Belarus</option><option value="27">Belgium</option><option value="34">Belize</option><option value="141">Benin</option><option value="30">Bermuda</option><option value="142">Bhutan</option><option value="31">Bolivia</option><option value="143">Bosnia and Herzegovina</option><option value="33">Botswana</option><option value="32">Brazil</option><option value="144">British Virgin Islands (UK)</option><option value="145">Brunei Darussalam</option><option value="29">Bulgaria</option><option value="28">Burkina Faso</option><option value="146">Burundi</option><option value="147">Cambodia</option><option value="148">Cameroon</option><option value="85">Canada</option><option value="444">Canary Islands (Spain)</option><option value="149">Cape Verde</option><option value="574">Caribbean Netherlands</option><option value="150">Cayman Islands (UK)</option><option value="151">Central African Republic</option><option value="152">Chad</option><option value="153">Channel Islands (UK)</option><option value="154">Chile</option><option value="76">China</option><option value="156">Colombia</option><option value="157">Comoros</option><option value="158">Congo, Democratic Republic</option><option value="421">Congo, Republic</option><option value="159">Cook Islands (NZ)</option><option value="36">Costa Rica</option><option value="161">Croatia</option><option value="83">Cuba</option><option value="37">Cyprus</option><option value="162">Czech Republic</option><option value="164">Denmark</option><option value="165">Djibouti</option><option value="166">Dominica</option><option value="422">Dominican Republic</option><option value="219">East Timor</option><option value="167">Ecuador</option><option value="168">Egypt</option><option value="169">El Salvador</option><option value="170">Equatorial Guinea</option><option value="171">Eritrea</option><option value="39">Estonia</option><option value="172">Ethiopia</option><option value="173">Faeroe Islands (Denmark)</option><option value="174">Falkland Islands (UK)</option><option value="175">Fiji</option><option value="176">Finland</option><option value="177">France</option><option value="178">French Guiana</option><option value="179">French Polynesia (France)</option><option value="180">Gabon</option><option value="181">Gambia</option><option value="182">Georgia</option><option value="38">Germany</option><option value="41">Ghana</option><option value="183">Gibraltar (UK)</option><option value="184">Greece</option><option value="185">Greenland (Denmark)</option><option value="81">Grenada</option><option value="186">Guadeloupe (France)</option><option value="187">Guam</option><option value="188">Guatemala</option><option value="189">Guinea</option><option value="190">Guinea-Bissau</option><option value="191">Guyana</option><option value="192">Haiti</option><option value="193">Holy See</option><option value="194">Honduras</option><option value="42">Hong Kong (China)</option><option value="195">Hungary</option><option value="196">Iceland</option><option value="78">India</option><option value="278">Indonesia</option><option value="315">Iran</option><option value="314">Iraq</option><option value="313">Ireland</option><option value="312">Isle of Man (UK)</option><option value="311">Israel</option><option value="310">Italy</option><option value="160">Ivory Coast </option><option value="84">Jamaica</option><option value="77">Japan</option><option value="309">Jordan</option><option value="308">Kazakhstan</option><option value="307">Kenya</option><option value="306">Kiribati</option><option value="570">Kosovo</option><option value="305">Kuwait</option><option value="304">Kyrgyzstan</option><option value="303">Laos</option><option value="302">Latvia</option><option value="301">Lebanon</option><option value="569">Leeward Antilles</option><option value="300">Lesotho</option><option value="299">Liberia</option><option value="298">Libya</option><option value="297">Liechtenstein</option><option value="296">Lithuania</option><option value="295">Luxembourg</option><option value="155">Macau (China)</option><option value="221">Macedonia</option><option value="294">Madagascar</option><option value="293">Malawi</option><option value="292">Malaysia</option><option value="291">Maldives</option><option value="290">Mali</option><option value="289">Malta</option><option value="288">Marshall Islands</option><option value="287">Martinique</option><option value="286">Mauritania</option><option value="285">Mauritius</option><option value="284">Mayotte (France)</option><option value="86">Mexico</option><option value="283">Micronesia</option><option value="249">Moldova</option><option value="282">Monaco</option><option value="281">Mongolia</option><option value="280">Montenegro</option><option value="279">Montserrat (UK)</option><option value="277">Morocco</option><option value="276">Mozambique</option><option value="275">Myanmar</option><option value="274">Namibia</option><option value="273">Nauru</option><option value="272">Nepal</option><option value="271">Netherlands</option><option value="23">Netherlands Antilles</option><option value="270">New Caledonia (France)</option><option value="269">New Zealand</option><option value="268">Nicaragua</option><option value="267">Niger</option><option value="75">Nigeria</option><option value="266">Niue (NZ)</option><option value="573">Norfolk Island (Australia)</option><option value="571">North Korea (DPRK)</option><option value="265">Northern Mariana Islands (US)</option><option value="264">Norway</option><option value="263">Occupied Palestinian Territory</option><option value="262">Oman</option><option value="261">Pakistan</option><option value="260">Palau</option><option value="259">Panama</option><option value="258">Papua New Guinea</option><option value="257">Paraguay</option><option value="256">Peru</option><option value="255">Philippines</option><option value="254">Pitcairn Islands (UK)</option><option value="253">Poland</option><option value="252">Portugal</option><option value="251">Puerto Rico (US)</option><option value="250">Qatar</option><option value="248">Reunion (France)</option><option value="247">Romania</option><option value="246">Russia</option><option value="245">Rwanda</option><option value="244">Saint Helena (UK)</option><option value="243">Saint Kitts and Nevis</option><option value="82">Saint Lucia</option><option value="575">Saint Martin (France)</option><option value="242">Saint Pierre and Miquelon (France)</option><option value="241">Saint Vincent and the Grenadines</option><option value="240">Samoa</option><option value="239">San Marino</option><option value="238">Sao Tome and Principe</option><option value="237">Saudi Arabia</option><option value="236">Senegal</option><option value="423">Serbia</option><option value="235">Seychelles</option><option value="234">Sierra Leone</option><option value="233">Singapore</option><option value="232">Slovakia</option><option value="231">Slovenia</option><option value="230">Solomon Islands</option><option value="229">Somalia</option><option value="74">South Africa</option><option value="163">South Korea</option><option value="134">South Sudan</option><option value="40">Spain</option><option value="228">Sri Lanka</option><option value="227">Sudan</option><option value="226">Suriname</option><option value="225">Swaziland</option><option value="224">Sweden</option><option value="35">Switzerland</option><option value="223">Syria</option><option value="424">Taiwan</option><option value="222">Tajikistan</option><option value="208">Tanzania</option><option value="220">Thailand</option><option value="218">Togo</option><option value="217">Tonga</option><option value="216">Trinidad and Tobago</option><option value="556">Tristan da Cunha (UK)</option><option value="215">Tunisia</option><option value="214">Turkey</option><option value="213">Turkmenistan</option><option value="212">Turks and Caicos Islands (UK)</option><option value="211">Tuvalu</option><option value="210">Uganda</option><option value="209">Ukraine</option><option value="18">United Arab Emirates</option><option value="1">United Kingdom</option><option value="2">United States of America</option><option value="207">United States Virgin Islands (US)</option><option value="206">Uruguay</option><option value="205">Uzbekistan</option><option value="204">Vanuatu</option><option value="203">Venezuela</option><option value="202">Vietnam</option><option value="201">Wallis and Futuna Islands (France)</option><option value="200">Western Sahara</option><option value="199">Yemen</option><option value="198">Zambia</option><option value="197">Zimbabwe</option></select>
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <select class="form-control selectpadd" name="city" id="home-search-city" data-bind="
+                                                options: selectedCountry() ? cities : null,
+                                                optionsText: function(item){return item.Name},
+                                                optionsValue : 'Name' ,
+                                                optionsCaption: 'City' ,
+                                                value: selectedCity,
+                                                visible: cities().length>
+                                            0" style=""><option value="">City</option><option value="Saint Johns">Saint Johns</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <select class="form-control selectpadd" name="category" id="home-search-category" data-bind="options: categories,
+                                        optionsText: function(item){return  item.Name},
+                                        optionsValue : 'Id',
+                                        optionsCaption: 'Category',
+                                        value : selectedCategory"><option value="">Category</option><option value="5">Medical</option><option value="1">Technical</option></select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <select class="form-control selectpadd" name="subcategory" id="home-search-subcategory" data-bind="
+                                                options: selectedCategory() ? subcategories : null,
+                                                optionsText: function(item){return item.Name},
+                                                optionsValue : 'Id' ,
+                                                optionsCaption: 'Sub Category' ,
+                                                value: selectedSubCategory,
+                                                visible: subcategories().length>
+                                            0" style="display: none;">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <select class="form-control selectpadd" name="subcategoryone" id="home-search-subcategoryone" data-bind="
+                                                options: selectedSubCategory() ? subcategoryones : null,
+                                                optionsText: function(item){return item.Name},
+                                                optionsValue : 'Id' ,
+                                                optionsCaption: 'Sub Category' ,
+                                                value: selectedSubCategoryOne,
+                                                visible: subcategoryones().length>
+                                            0" style="display: none;">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <select class="form-control selectpadd" name="subcategorytwo" id="home-search-subcategorytwo" data-bind="
+                                                options: selectedSubCategoryOne() ? subcategorytwos : null,
+                                                optionsText: function(item){return item.Name},
+                                                optionsValue : 'Id' ,
+                                                optionsCaption: 'Sub Category' ,
+                                                value: selectedSubCategoryTwo,
+                                                visible: subcategorytwos().length>
+                                            0" style="display: none;">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <select class="form-control selectpadd" name="ranking">
+                                                <option value="">Ranking</option>
+                                                            <option value="3">Tier 1</option>
+                                                            <option value="4">Tier 2</option>
+                                                            <option value="5">Tier 3</option>
+                                                            <option value="126">Tier 4</option>
+                                                            <option value="127">Tier 5</option>
+                                                            <option value="644">Unranked</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <select class="form-control selectpadd" name="network">
+                                                <option value="">Network/Group</option>
+                                                            <option value="599">2018  PyeongChang Winter Olympics</option>
+                                                            <option value="580">360 Portal Referral</option>
+                                                            <option value="442">Air Atlanta</option>
+                                                            <option value="598">Amec Foster Wheeler</option>
+                                                            <option value="425">Business Travel</option>
+                                                            <option value="551">CISV International </option>
+                                                            <option value="645">Crisis24 (Demo)</option>
+                                                            <option value="583">Digicel</option>
+                                                            <option value="445">Dive Master</option>
+                                                            <option value="629">FCO Network</option>
+                                                            <option value="616">Formula 1 2019 Season</option>
+                                                            <option value="604">GEM CANADA</option>
+                                                            <option value="544">GEM LACA</option>
+                                                            <option value="577">GEM USA</option>
+                                                            <option value="600">GOP Accepted Direct</option>
+                                                            <option value="601">GOP Accepted via Agent</option>
+                                                            <option value="540">MSO</option>
+                                                            <option value="539">Now Health 2</option>
+                                                            <option value="643">Palladium</option>
+                                                            <option value="603">SATIB</option>
+                                                            <option value="588">Security Exchange</option>
+                                                            <option value="606">Smart Health Intl Plan Nigeria</option>
+                                                            <option value="7">VHI</option>
+                                                            <option value="73">Virgin Atlantic</option>
+                                                            <option value="436">Volvo RTW Yacht race</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <select class="form-control selectpadd" name="specialism">
+                                                <option value="">Specialism</option>
+                                                            <option value="54">24/7 Emergency Department</option>
+                                                            <option value="45">24/7 Physician cover (on site)</option>
+                                                            <option value="610">Agent - Access to Counsellors or Psychologists</option>
+                                                            <option value="494">Agent - Access to Lawyers/Legal Advice</option>
+                                                            <option value="468">Agent - Air Ambulance</option>
+                                                            <option value="480">Agent - Air Taxi</option>
+                                                            <option value="500">Agent - Car Hire</option>
+                                                            <option value="501">Agent - Cash Advance</option>
+                                                            <option value="475">Agent - Claims support</option>
+                                                            <option value="478">Agent - Coordination of Stretcher on a Commercial Aircraft</option>
+                                                            <option value="611">Agent - Coordination of Visas</option>
+                                                            <option value="474">Agent - Cost Containment</option>
+                                                            <option value="613">Agent - Crisis Management in the Event of Natural/Political/Security Event</option>
+                                                            <option value="466">Agent - Emergency Medical Rescue from site</option>
+                                                            <option value="469">Agent - Ground Ambulance</option>
+                                                            <option value="576">Agent - Guarantee of Payment</option>
+                                                            <option value="467">Agent - HEMs</option>
+                                                            <option value="496">Agent - Independant Medical Examinations (PA Claims)</option>
+                                                            <option value="503">Agent - Interpreters (personnel)</option>
+                                                            <option value="493">Agent - Investigator (Incident / Claim)</option>
+                                                            <option value="612">Agent - Invoice Negotiation with “out of Network” Providers</option>
+                                                            <option value="608">Agent - Local Cremation</option>
+                                                            <option value="499">Agent - Lost or stolen (documents/luggage)</option>
+                                                            <option value="614">Agent - Medical Advice</option>
+                                                            <option value="484">Agent - Medical Clearance (Airlines)</option>
+                                                            <option value="479">Agent - Medical Escort</option>
+                                                            <option value="481">Agent - Medical Facility or Practitioner Recommendation</option>
+                                                            <option value="472">Agent - Medical House Call</option>
+                                                            <option value="470">Agent - Medical Monitoring</option>
+                                                            <option value="487">Agent - Medical or Other Specialised Translation</option>
+                                                            <option value="486">Agent - Medicine Dispatch</option>
+                                                            <option value="485">Agent - Mobility Aid Supply (Wheelchair, etc)</option>
+                                                            <option value="615">Agent - Obtain Medical Reports</option>
+                                                            <option value="489">Agent - Port / Marine Services</option>
+                                                            <option value="609">Agent - Pre-Employment Health Assessments</option>
+                                                            <option value="607">Agent - Repatriation of Remains</option>
+                                                            <option value="476">Agent - Travel Arrangements (Hotels, Taxis, Flights Etc.)</option>
+                                                            <option value="453">Ambulance Service (on site)</option>
+                                                            <option value="454">Anaesthesia</option>
+                                                            <option value="550">Bone marrow transplant </option>
+                                                            <option value="450">Burns Unit</option>
+                                                            <option value="549">Cardiac transplantation </option>
+                                                            <option value="511">Cardiology</option>
+                                                            <option value="46">Cardiology (Interventional)</option>
+                                                            <option value="51">CCU</option>
+                                                            <option value="622">Dental</option>
+                                                            <option value="48">Dermatology</option>
+                                                            <option value="446">Dialysis</option>
+                                                            <option value="455">Endocrinology</option>
+                                                            <option value="49">ENT</option>
+                                                            <option value="447">Family Medicine (GP)</option>
+                                                            <option value="448">Gastroenterology</option>
+                                                            <option value="506">GYN</option>
+                                                            <option value="516">Haematology</option>
+                                                            <option value="624">Hyperbaric Chamber</option>
+                                                            <option value="53">ICU</option>
+                                                            <option value="456">Infectious Diseases</option>
+                                                            <option value="626">Internal Blood Bank</option>
+                                                            <option value="567">Internist</option>
+                                                            <option value="508">IVF</option>
+                                                            <option value="548">Liver transplantation </option>
+                                                            <option value="627">Medical House Calls</option>
+                                                            <option value="625">Neonatal ICU</option>
+                                                            <option value="617">Neonatal Medicine</option>
+                                                            <option value="515">Nephrology</option>
+                                                            <option value="507">Neurology</option>
+                                                            <option value="517">Nuclear medicine</option>
+                                                            <option value="44">Obstetrics</option>
+                                                            <option value="449">Oncology</option>
+                                                            <option value="568">Orthopedic</option>
+                                                            <option value="43">Paediatrics</option>
+                                                            <option value="452">Pathology (on site)</option>
+                                                            <option value="437">Physiotherapy</option>
+                                                            <option value="510">Psychiatry</option>
+                                                            <option value="52">Radiology including CT and MRI</option>
+                                                            <option value="623">Rehabilitation Medicine</option>
+                                                            <option value="459">Respiratory Medicine</option>
+                                                            <option value="458">Rheumatology</option>
+                                                            <option value="518">Surgery - Bariatric </option>
+                                                            <option value="47">Surgery - Cardiac/Cardiothoracic</option>
+                                                            <option value="461">Surgery - General</option>
+                                                            <option value="619">Surgery - Hand</option>
+                                                            <option value="465">Surgery - Maxillofacial</option>
+                                                            <option value="621">Surgery - Neurological (incl. interventional neuroradiology))</option>
+                                                            <option value="50">Surgery - Neurosurgery</option>
+                                                            <option value="457">Surgery - Opthalmology</option>
+                                                            <option value="462">Surgery - Orthopaedic</option>
+                                                            <option value="463">Surgery - Paediatric</option>
+                                                            <option value="464">Surgery - Plastic</option>
+                                                            <option value="620">Surgery - Renal</option>
+                                                            <option value="514">Surgery - Vascular</option>
+                                                            <option value="602">Telephone Interpreter</option>
+                                                            <option value="519">Thoracic Surgery </option>
+                                                            <option value="460">Urology</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <select class="form-control selectpadd" name="accessmethod" id="home-search-accessmethod" data-bind="options:accessmethods ,optionsText: function(item){return  item.Name},optionsValue : 'Id',optionsCaption: 'Access Method',value : selectAccessmethods"><option value="">Access Method</option><option value="1">&nbsp;Collinson Network</option><option value="2">&nbsp;Alternative Network</option><option value="3">&nbsp;Both</option></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <select class="form-control selectpadd" name="Preferred" id="home-search-Preferred" data-bind="visible:selectAccessmethods()!='1' &amp;&amp; selectAccessmethods()!=null, options:preferred ,optionsText: function(item){return  item.Name},optionsValue : 'Id',optionsCaption: 'Parent Agents' ,value:selectPreferred" style="display: none;"><option value="">Parent Agents</option><option value="2387">&nbsp;&nbsp;MEERA RESCUE SERVICES</option><option value="2335">&nbsp;&nbsp;ASIA RESCUE AND MEDICAL SERVICES (ARMS)</option><option value="2247">&nbsp;&nbsp;(GAH) GLOBAL ASSISTANCE AND HEALTHCARE</option><option value="4261">&nbsp;&nbsp;FOUR POINTS ASSISTANCE </option><option value="8089">&nbsp;&nbsp;INTERNATIONAL STAR ASSISTANCE PRIVATE LIMITED</option><option value="2855">&nbsp;&nbsp;ASSISTANCE SERVICES OF THE AMERICAS (ASA)</option><option value="3493">&nbsp;&nbsp;MARM ASSISTANCE</option><option value="1535">&nbsp;&nbsp;CONNEX ASSISTANCE</option><option value="4260">&nbsp;&nbsp;BRITISH INTERNATIONAL ASSISTANCE (BIA)</option><option value="8065">&nbsp;&nbsp;AL QALEUH AL HADITHUH (AQA ASSISTANCE )</option><option value="8021">&nbsp;&nbsp;GORAL ASSISTANCE CANADA</option><option value="4009">&nbsp;&nbsp;JAPAN ASSIST INTERNATIONAL (JAIC)</option><option value="2570">&nbsp;&nbsp;EMERGENCY ASSISTANCE JAPAN</option></select>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <button type="submit" class="btn btn-default btn-search">
+                                        Search
+                                    </button>
+                                </div>
+                            </div>
+                            
+
+
+                        </form>
+                    </section>
+                    <section class="search-results">
+                            <h2>Search Results - 9 </h2>
+
+                            <a href="/Provider/PrintSearchResults?category=0&amp;network=0&amp;ranking=0&amp;subcategory=0&amp;subcategoryone=0&amp;subcategorytwo=0&amp;countryId=80" class="print" target="_blank" style="float: right; margin: -5px 0 0 3px;"></a>
+                                <a href="/Provider/DownloadSearchResults?category=0&amp;network=0&amp;ranking=0&amp;subcategory=0&amp;subcategoryone=0&amp;subcategorytwo=0&amp;countryId=80" class="download" style="float: right; margin: -5px 0 0 3px;"></a>
+                            <table id="results-table" class="tableshort table-striped table-responsive table-hover tablesorter tablesorter-default" role="grid">
+                                <thead>
+                                    <tr class="tablesorter-headerRow" role="row">
+                                        <th width="40%" data-column="0" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" aria-controls="results-table" unselectable="on" aria-sort="none" aria-label="Name: No sort applied, activate to apply an ascending sort" style="user-select: none;"><div class="tablesorter-header-inner"><a href="#">Name</a></div></th>
+                                        <th data-column="1" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" aria-controls="results-table" unselectable="on" aria-sort="none" aria-label="Type: No sort applied, activate to apply an ascending sort" style="user-select: none;"><div class="tablesorter-header-inner"><a href="#">Type</a></div></th>
+                                            <th data-column="2" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" aria-controls="results-table" unselectable="on" aria-sort="none" aria-label="Ranking: No sort applied, activate to apply an ascending sort" style="user-select: none;"><div class="tablesorter-header-inner"><a href="#">Ranking</a></div></th>
+                                        <th data-column="3" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" aria-controls="results-table" unselectable="on" aria-sort="none" aria-label="Telephone: No sort applied, activate to apply an ascending sort" style="user-select: none;"><div class="tablesorter-header-inner">Telephone</div></th>
+                                        <th data-column="4" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" aria-controls="results-table" unselectable="on" aria-sort="none" aria-label="Address: No sort applied, activate to apply an ascending sort" style="user-select: none;"><div class="tablesorter-header-inner">Address</div></th>
+                                        <th width="3%" data-column="5" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" aria-controls="results-table" unselectable="on" aria-sort="none" aria-label="Feedback: No sort applied, activate to apply an ascending sort" style="user-select: none;"><div class="tablesorter-header-inner">Feedback</div></th>
+                                    </tr>
+                                </thead>
+                                <tbody aria-live="polite" aria-relevant="all">
+
+                                        <tr>
+                                                <td width="40%"><a href="view/280/?customerLocation=" class="btn btn-default" target="_blank" title="ADELIN MEDICAL CENTRE">ADELIN MEDICAL CENTRE </a></td>
+                                            <td><span data-toggle="tooltip" data-html="true" data-container="body" title="" data-original-title="Medical<br />&amp;nbsp;-&amp;nbsp;Medical Facility<br />&amp;nbsp;&amp;nbsp;&amp;nbsp;-&amp;nbsp;Hospital">Hospital</span></td>
+                                                <td class="ranking" style="white-space:nowrap">
+                                                                    ★
+                                                                    ★
+
+                                                </td>
+                                            <td>+1 2684620866</td>
+                                            <td>Fort Road, P.O. Box 1123, Antigua, Saint Johns, Antigua and Barbuda</td>
+                                            <td width="3%" style="text-align:center;"> <a href="javascript:void(0);" id="Feedback_280" onclick="FeedbackClick('280','ADELIN MEDICAL CENTRE');"><i class="fa fa-comments-o" style="font-size:24px"></i></a></td>
+                                        </tr>
+                                        <tr>
+                                                <td width="40%"><a href="view/2022/?customerLocation=" class="btn btn-default" target="_blank" title="ALBIN INTERNATIONAL REPATRIATION LIMITED">ALBIN INTERNATIONAL REPATRIATION LIMITED </a></td>
+                                            <td><span data-toggle="tooltip" data-html="true" data-container="body" title="" data-original-title="Medical<br />&amp;nbsp;-&amp;nbsp;Medical Logistics<br />&amp;nbsp;&amp;nbsp;&amp;nbsp;-&amp;nbsp;Intl. Funeral RMR Company">Intl. Funeral RMR Company</span></td>
+                                                <td class="ranking" style="white-space:nowrap">
+                                                                    ★
+                                                                    ★
+                                                                    ★
+                                                                    ★
+                                                                    ★
+
+                                                </td>
+                                            <td>+44 2073136920</td>
+                                            <td>51 Neptune Street, London, United Kingdom, SE16 7JP</td>
+                                            <td width="3%" style="text-align:center;"> <a href="javascript:void(0);" id="Feedback_2022" onclick="FeedbackClick('2022','ALBIN INTERNATIONAL REPATRIATION LIMITED');"><i class="fa fa-comments-o" style="font-size:24px"></i></a></td>
+                                        </tr>
+                                        <tr>
+                                                <td width="40%"><a href="view/3911/?customerLocation=" class="btn btn-default" target="_blank" title="HEALTHWATCH ASSISTANCE ">HEALTHWATCH ASSISTANCE  </a></td>
+                                            <td><span data-toggle="tooltip" data-html="true" data-container="body" title="" data-original-title="Medical<br />&amp;nbsp;-&amp;nbsp;Medical Logistics<br />&amp;nbsp;&amp;nbsp;&amp;nbsp;-&amp;nbsp;Agent">Agent</span></td>
+                                                <td class="ranking" style="white-space:nowrap">
+                                                                    ★
+                                                                    ★
+
+                                                </td>
+                                            <td>+30 6937320101</td>
+                                            <td>5 Amigdalies, NeaEfkarpia, , P.O.Box 40404, Stavroupoli, 56410, Thessaloniki, Greece, 56429</td>
+                                            <td width="3%" style="text-align:center;"> <a href="javascript:void(0);" id="Feedback_3911" onclick="FeedbackClick('3911','HEALTHWATCH ASSISTANCE ');"><i class="fa fa-comments-o" style="font-size:24px"></i></a></td>
+                                        </tr>
+                                        <tr>
+                                                <td width="40%"><a href="view/282/?customerLocation=" class="btn btn-default" target="_blank" title="HOLBERTON HOSPITAL">HOLBERTON HOSPITAL </a></td>
+                                            <td><span data-toggle="tooltip" data-html="true" data-container="body" title="" data-original-title="Medical<br />&amp;nbsp;-&amp;nbsp;Medical Facility<br />&amp;nbsp;&amp;nbsp;&amp;nbsp;-&amp;nbsp;Hospital">Hospital</span></td>
+                                                <td class="ranking" style="white-space:nowrap">
+                                                                    ★
+                                                                    ★
+
+                                                </td>
+                                            <td>+1 2684620251</td>
+                                            <td>Hospital Road, Antigua, Saint Johns, Antigua and Barbuda</td>
+                                            <td width="3%" style="text-align:center;"> <a href="javascript:void(0);" id="Feedback_282" onclick="FeedbackClick('282','HOLBERTON HOSPITAL');"><i class="fa fa-comments-o" style="font-size:24px"></i></a></td>
+                                        </tr>
+                                        <tr>
+                                                <td width="40%"><a href="view/2817/?customerLocation=" class="btn btn-default" target="_blank" title="INTERNATIONAL WEST INDIES ASSISTANCE (IWIA)">INTERNATIONAL WEST INDIES ASSISTANCE (IWIA) </a></td>
+                                            <td><span data-toggle="tooltip" data-html="true" data-container="body" title="" data-original-title="Medical<br />&amp;nbsp;-&amp;nbsp;Medical Logistics<br />&amp;nbsp;&amp;nbsp;&amp;nbsp;-&amp;nbsp;Agent<br />&amp;nbsp;&amp;nbsp;&amp;nbsp;-&amp;nbsp;Air Ambulance">Agent</span></td>
+                                                <td class="ranking" style="white-space:nowrap">
+                                                                    ★
+                                                                    ★
+                                                                    ★
+
+                                                </td>
+                                            <td>+596 596701889</td>
+                                            <td>Observatoire de l'eau Martinique,  7 Avenue Condorcet,  , Fort De France, Martinique, 97200</td>
+                                            <td width="3%" style="text-align:center;"> <a href="javascript:void(0);" id="Feedback_2817" onclick="FeedbackClick('2817','INTERNATIONAL WEST INDIES ASSISTANCE (IWIA)');"><i class="fa fa-comments-o" style="font-size:24px"></i></a></td>
+                                        </tr>
+                                        <tr>
+                                                <td width="40%"><a href="view/203/?customerLocation=" class="btn btn-default" target="_blank" title="MEDICAL SURGICAL ASSOCIATES">MEDICAL SURGICAL ASSOCIATES </a></td>
+                                            <td><span data-toggle="tooltip" data-html="true" data-container="body" title="" data-original-title="Medical<br />&amp;nbsp;-&amp;nbsp;Medical Facility<br />&amp;nbsp;&amp;nbsp;&amp;nbsp;-&amp;nbsp;Clinic">Clinic</span></td>
+                                                <td class="ranking" style="white-space:nowrap">
+                                                                    ★
+                                                                    ★
+                                                                    ★
+
+                                                </td>
+                                            <td>+1268 4815200</td>
+                                            <td>Woods Complex, Friars Hill Road, Saint Johns, Antigua and Barbuda</td>
+                                            <td width="3%" style="text-align:center;"> <a href="javascript:void(0);" id="Feedback_203" onclick="FeedbackClick('203','MEDICAL SURGICAL ASSOCIATES');"><i class="fa fa-comments-o" style="font-size:24px"></i></a></td>
+                                        </tr>
+                                        <tr>
+                                                <td width="40%"><a href="view/281/?customerLocation=" class="btn btn-default" target="_blank" title="MOUNT SAINT JOHN MEDICAL FACILITY">MOUNT SAINT JOHN MEDICAL FACILITY </a></td>
+                                            <td><span data-toggle="tooltip" data-html="true" data-container="body" title="" data-original-title="Medical<br />&amp;nbsp;-&amp;nbsp;Medical Facility<br />&amp;nbsp;&amp;nbsp;&amp;nbsp;-&amp;nbsp;Hospital">Hospital</span></td>
+                                                <td class="ranking" style="white-space:nowrap">
+                                                                    ★
+                                                                    ★
+                                                                    ★
+
+                                                </td>
+                                            <td>+1 2684842700</td>
+                                            <td>Mount St John's Medical Facilty, Antigua, Saint Johns, Antigua and Barbuda</td>
+                                            <td width="3%" style="text-align:center;"> <a href="javascript:void(0);" id="Feedback_281" onclick="FeedbackClick('281','MOUNT SAINT JOHN MEDICAL FACILITY');"><i class="fa fa-comments-o" style="font-size:24px"></i></a></td>
+                                        </tr>
+                                        <tr>
+                                                <td width="40%"><a href="view/6281/?customerLocation=" class="btn btn-default" target="_blank" title="ROWLAND BROTHERS FUNERAL SERVICES ">ROWLAND BROTHERS FUNERAL SERVICES  </a></td>
+                                            <td><span data-toggle="tooltip" data-html="true" data-container="body" title="" data-original-title="Medical<br />&amp;nbsp;-&amp;nbsp;Medical Logistics<br />&amp;nbsp;&amp;nbsp;&amp;nbsp;-&amp;nbsp;Intl. Funeral RMR Company">Intl. Funeral RMR Company</span></td>
+                                                <td class="ranking" style="white-space:nowrap">
+                                                                    ★
+                                                                    ★
+                                                                    ★
+                                                                    ★
+
+                                                </td>
+                                            <td>+44 2086841667 </td>
+                                            <td>299-305 Whitehorse Road, West Croydon, London, United Kingdom, CR0 2HR</td>
+                                            <td width="3%" style="text-align:center;"> <a href="javascript:void(0);" id="Feedback_6281" onclick="FeedbackClick('6281','ROWLAND BROTHERS FUNERAL SERVICES ');"><i class="fa fa-comments-o" style="font-size:24px"></i></a></td>
+                                        </tr>
+                                        <tr>
+                                                <td width="40%"><a href="view/2886/?customerLocation=" class="btn btn-default" target="_blank" title="USMX AIRLINK">USMX AIRLINK </a></td>
+                                            <td><span data-toggle="tooltip" data-html="true" data-container="body" title="" data-original-title="Medical<br />&amp;nbsp;-&amp;nbsp;Medical Logistics<br />&amp;nbsp;&amp;nbsp;&amp;nbsp;-&amp;nbsp;Air Ambulance">Air Ambulance</span></td>
+                                                <td class="ranking" style="white-space:nowrap">
+                                                                    ★
+                                                                    ★
+                                                                    ★
+                                                                    ★
+                                                                    ★
+
+                                                </td>
+                                            <td>+52 3336298700</td>
+                                            <td>Paseo Royal Country 4650 , Piso 7, Zapopan, Mexico, 45110</td>
+                                            <td width="3%" style="text-align:center;"> <a href="javascript:void(0);" id="Feedback_2886" onclick="FeedbackClick('2886','USMX AIRLINK');"><i class="fa fa-comments-o" style="font-size:24px"></i></a></td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                            <section id="paging-links">
+                                
+                            </section>
+                    </section>
+
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="./css/intana-custom.css" />
+<!-- Modal -->
+<div class="modal fade" id="modelFeedback" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="">
+                    <h4 class="modal-title"></h4>
+                    <p>Share your feedback (feedback will not be made public and only be shared with Collinson)</p>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="editor-field">
+                    <textarea class="form-control" rows="4" cols="6" placeholder="Please type your comments here.(Optional)" id="txtFeedback"></textarea>
+                </div>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="stars">
+                            <div>
+                                <input class="star star-5" id="star-5" type="radio" name="star" onclick="starClick('5');" />
+                                <label class="star star-5" for="star-5"></label>
+                                <input class="star star-4" id="star-4" type="radio" name="star" onclick="starClick('4');" />
+                                <label class="star star-4" for="star-4"></label>
+                                <input class="star star-3" id="star-3" type="radio" name="star" onclick="starClick('3');" />
+                                <label class="star star-3" for="star-3"></label>
+                                <input class="star star-2" id="star-2" type="radio" name="star" onclick="starClick('2');" />
+                                <label class="star star-2" for="star-2"></label>
+                                <input class="star star-1" id="star-1" type="radio" name="star" onclick="starClick('1');" />
+                                <label class="star star-1" for="star-1"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3" style="display: inline-flex;">
+                        <div id="div_starvalue" style="font-size: 18px; padding-top: 10px;">0</div><div style="font-size: 18px; padding-top: 10px;">/5</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="editor-label">
+                            <label>Case reference number</label>
+                        </div>
+                        <div class="editor-field">
+                            <input class="form-control" style="padding:15px;" id="txtCaseRef" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="fb-error" id="div_feedbackError">Please select rating </div>
+                </div>
+
+                    <input type="hidden" id="hdnProviderId" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="btnFeedbackSubmit" name="SaveAndExit">Submit Feedback </button>
+                    <button type="button" class="btn" data-dismiss="modal">Close </button>
+                </div>
+            </div>
+
+    </div>
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script src="https://maps.google.com/maps/api/js?language=en&key=AIzaSyAzN_3M-jHtX3ZFO3J40zm36fEDMmcQphs"></script>
+    <script src="./js/gmap3.min.js"></script>
+    <script src="./js/geoUtils.js"></script>
+    <script src="./js/googleDistanceMatrixUtil.js?v=20150716"></script>
+  
+   
+    <script src="./js/scripts.js"></script>
+    <script>
+
+        $(document).ready(function ($) {
+
+
+
+            var calculateDistanceDuration = function () {
+                var ltLngs = [];
+                var providerIds = [];               
+
+                calculateDistances(providerIds, "@Model.CurrentLocation", ltLngs);
+            }
+            calculateDistanceDuration();
+            initmap();
+            $(window).resize(function () {
+
+                setTimeout(function () {
+                    $("#themap").html('<div id="map-canvas"></div>');
+                    initmap();
+                }, 500);
+            });
+            $('#maptoggle').click(function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                $('#results-panel').toggleClass('close');
+                $('#map').toggleClass('open');
+                $('#results-table').removeClass("tableshort").addClass("table");
+            });
+            $('#pntoggle').click(function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                $('#results-panel').toggleClass('close');
+                $('#map').toggleClass('open');
+                $('#results-table').removeClass("table").addClass("tableshort");
+            });
+
+        });
+
+        function FeedbackClick(id, name) {
+            $('#div_feedbackError').hide();
+            $('#div_starvalue').html('0');
+            $('.star').prop('checked', false);
+            $('#txtCaseRef').val('');
+            $('#txtFeedback').val('');
+            $("#btnFeedbackSubmit").attr("disabled", false);
+            $('#hdnProviderId').val(id);
+            $("#modelFeedback").find('.modal-title').html(name);
+            $("#modelFeedback").modal({
+                backdrop: 'static',
+                keyboard: false,
+                show: true
+            });
+             //$("#modelFeedback").modal("show");
+        }
+
+        $("#btnFeedbackSubmit").click(function () {
+            if ($('#div_starvalue').html() > 0) {
+                $("#btnFeedbackSubmit").attr("disabled", true);
+                $('#div_feedbackError').hide();
+               
+                $.ajax({
+                    method: "GET",
+                    url: urlFeedback,
+                    data: {
+                        "providerId": $('#hdnProviderId').val(), "star": $('#div_starvalue').html(), "referencenumber": $('#txtCaseRef').val(), "message": $('#txtFeedback').val()},
+                    success: function (result) {
+                        if (result === "success")
+                        {
+                            $("#modelFeedback").modal("hide");
+                            $("#feedbackSuccess").modal("show");
+                        }
+                        else {
+                            $("#modelFeedback").modal("hide");
+                            $("#feedbackSuccess").modal("show");
+                            alert("Email delivery failed!");
+                        }
+                    }
+                });
+            }
+            else {
+                $('#div_feedbackError').show();
+            }
+        });
+
+        function starClick(value) {
+            $('#div_starvalue').html(value);
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
+    <script src="./js/search-results.js"></script>
+    <script type="text/javascript">
+
+        var AccessIds = "@Model.AccessMethod.Where(m=>m.Value ==AccessMethodEnum.CollinsonNetwork.GetEnumDescription().ToString()).Select(m=>m.Key).FirstOrDefault()";
+        
+    </script>
+    <script type="text/javascript">
+        function getDisplayName(name) {
+            if (name.length <= 25)
+                return name;
+
+            return name.substring(0, 24) + "...";
+        }
+
+
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip({
+                placement: function () { return 'right' }
+            });
+        });
+    </script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+   
+    <script src="./js/scripts.js"></script>
+   
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="js/respond.min.js"></script>
+    <script src="js/legacy.js"></script>
+    <![endif]-->
+    <footer class="text-right" style="margin-top:20px;padding:10px">
+       <p>Application version :<strong>3.0.8.1211</strong></p>
+    </footer>
+</body>
+</html>
